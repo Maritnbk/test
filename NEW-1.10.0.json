@@ -602,49 +602,48 @@
         {
           "rule_set": [
             "geosite-youtube",
-			"geosite-docker",
+	    "geosite-docker",
             "geosite-github",
-			"geosite-openai",
+	    "geosite-openai",
             "geosite-google",
-			"geosite-twitter",
-			"geosite-telegram",
-			"geosite-bahamut",
-			"geosite-spotify",
-			"geosite-tiktok",
-			"geosite-netflix",
-			"geosite-disney",
-			"geosite-hbo",
+	    "geosite-twitter",
+	    "geosite-telegram",
+	    "geosite-bahamut",
+	    "geosite-spotify",
+	    "geosite-tiktok",
+            "geosite-netflix",
+	    "geosite-disney",
+	    "geosite-hbo",
             "geosite-primevideo",
-			"geosite-facebook",
-			"geosite-javdb",
-			"geosite-category-games"
+	    "geosite-facebook",
+	    "geosite-javdb",
+	    "geosite-category-games"
           ],
           "outbound": "Proxy"
         },
         {
           "rule_set": [
             "geoip-telegram",
-			"geoip-twitter",
+	    "geoip-twitter",
             "geoip-google",
-			"geoip-netflix",
-			"geoip-facebook"
+            "geoip-netflix",
+	    "geoip-facebook"
           ],
           "outbound": "Proxy"
         },
         {
           "rule_set": [
-            "geoip-bilibili",
             "geosite-bilibili",
-			"geosite-jd",
-			"geosite-alibaba"
+            "geosite-bilibili",
+	    "geosite-jd",
+	    "geosite-alibaba"
           ],
           "outbound": "direct"
         },
         {
           "rule_set": [
-            "geoip-apple",
             "geosite-apple",
-			"geosite-microsoft",
+	    "geosite-microsoft",
             "geosite-amazon"
           ],
           "outbound": "Microsoft"
@@ -703,20 +702,6 @@
           "type": "remote",
           "format": "binary",
           "url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geoip/netflix.srs",
-          "download_detour": "direct"
-        },
-        {
-          "tag": "geoip-apple",
-          "type": "remote",
-          "format": "binary",
-          "url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geoip/apple.srs",
-          "download_detour": "direct"
-        },
-        {
-          "tag": "geoip-bilibili",
-          "type": "remote",
-          "format": "binary",
-          "url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geoip/bilibili.srs",
           "download_detour": "direct"
         },
         {
