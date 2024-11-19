@@ -118,7 +118,7 @@
           "Serv0-Vms",
           "Serv0-Tro",
           "Serv00-HY2",
-          "Serv00-TUIC"
+          "Serv00-Socks"
         ]
       },
       {
@@ -162,7 +162,7 @@
           "Serv0-Vms",
           "Serv0-Tro",
 	  "Serv00-HY2",
-	  "Serv00-TUIC"
+	  "Serv00-Socks"
         ],
         "url": "http://www.gstatic.com/generate_204",
         "interval": "10m",
@@ -541,23 +541,15 @@
       }
     },
     {
-      "tag": "Serv00-TUIC",
-      "type": "tuic",
+      "tag": "Serv00-Socks",      
+      "type": "socks",
       "server": "s0.serv00.com",
-      "server_port": 22825,
-      "uuid": "2653bdd0-0af1-4f3c-b426-84ebb3d6db40",
-      "password": "2653bdd0-0af1-4f3c-b426-84ebb3d6db40",
-      "congestion_control": "bbr",
-      "udp_relay_mode": "native",
-      "zero_rtt_handshake": false,
-      "heartbeat": "10s",
-      "tls": {
-        "enabled": true,
-        "alpn": [
-          "h3"
-        ],
-        "insecure": false,
-        "server_name": "sb.bzmtk.cloudns.biz"
+      "server_port": 8389,
+      "version": "5",
+      "username": "martin",
+      "password": "serv090",
+      "network": "tcp",
+      "tcp_fast_open": false
       }
     }
     ],
