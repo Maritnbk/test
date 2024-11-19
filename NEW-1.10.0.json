@@ -550,7 +550,6 @@
       "password": "serv090",
       "network": "tcp",
       "tcp_fast_open": false
-      }
     }
     ],
   //结尾
