@@ -117,9 +117,9 @@
           "CF-ws-qa",
           "CF-ws-sg",
           "CF-ws-www",
-          "Serv00-HY2-0",
-          "Serv00-HY2-1",
           "Serv00-Socks"
+          "Serv00-HY2-0",
+          "Serv00-HY2-1"
         ]
       },
       {
@@ -159,9 +159,9 @@
           "CF-ws-qa",
           "CF-ws-sg",
           "CF-ws-www",
+          "Serv00-Socks"
           "Serv00-HY2-0",
-          "Serv00-HY2-1",
-	  "Serv00-Socks"
+          "Serv00-HY2-1"
         ],
         "url": "http://www.gstatic.com/generate_204",
         "interval": "10m",
@@ -457,6 +457,17 @@
       "tcp_fast_open": false
     },
     {
+      "tag": "Serv00-Socks",      
+      "type": "socks",
+      "server": "s0.serv00.com",
+      "server_port": 8389,
+      "version": "5",
+      "username": "martin",
+      "password": "serv090",
+      "network": "tcp",
+      "tcp_fast_open": false
+    },
+    {
       "tag": "Serv00-HY2-0",
       "type": "hysteria2",
       "server": "128.204.218.63",
@@ -491,17 +502,6 @@
           "h3"
         ]
       }
-    },
-    {
-      "tag": "Serv00-Socks",      
-      "type": "socks",
-      "server": "s0.serv00.com",
-      "server_port": 8389,
-      "version": "5",
-      "username": "martin",
-      "password": "serv090",
-      "network": "tcp",
-      "tcp_fast_open": false
     }
     ],
   //结尾
