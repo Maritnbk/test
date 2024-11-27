@@ -117,10 +117,8 @@
           "CF-ws-qa",
           "CF-ws-sg",
           "CF-ws-www",
-          "Serv00-Vls",
-          "Serv0-Vms",
-          "Serv0-Tro",
-          "Serv00-HY2",
+          "Serv00-HY2-0",
+          "Serv00-HY2-1",
           "Serv00-Socks"
         ]
       },
@@ -161,10 +159,8 @@
           "CF-ws-qa",
           "CF-ws-sg",
           "CF-ws-www",
-          "Serv00-Vls",
-          "Serv0-Vms",
-          "Serv0-Tro",
-	  "Serv00-HY2",
+          "Serv00-HY2-0",
+          "Serv00-HY2-1",
 	  "Serv00-Socks"
         ],
         "url": "http://www.gstatic.com/generate_204",
@@ -461,76 +457,29 @@
       "tcp_fast_open": false
     },
     {
-      "tag": "Serv00-Vls",
-      "type": "vless",
-      "server": "www.visa.com",
-      "server_port": 443,
-      "uuid": "a247fca8-73ef-4452-941a-88ffe3dbb3fb",
-      "packet_encoding": "xudp",
-      "tls": {
-        "enabled": true,
-        "insecure": true,
-        "server_name": "vl.bzmtk.cloudns.biz"
-      },
-      "transport": {
-        "type": "ws",
-        "path": "/serv00-vless",
-        "headers": {
-          "Host": "vl.bzmtk.cloudns.biz"
-        },
-        "early_data_header_name": "Sec-WebSocket-Protocol",
-        "max_early_data": 2560
-      }
-    },
-    {
-      "tag": "Serv0-Vms",
-      "type": "vmess",
-      "server": "www.visa.com",
-      "server_port": 443,
-      "uuid": "a247fca8-73ef-4452-941a-88ffe3dbb3fb",
-      "security": "none",
-      "alter_id": 0,
-      "packet_encoding": "xudp",
-      "tls": {
-        "enabled": true,
-        "insecure": true,
-        "server_name": "vm.bzmtk.cloudns.biz"
-      },
-      "transport": {
-        "type": "ws",
-        "headers": {
-          "Host": "vm.bzmtk.cloudns.biz"
-        },
-        "path": "/serv00-vmess",
-        "early_data_header_name": "Sec-WebSocket-Protocol",
-        "max_early_data": 2560
-      }
-    },
-    {
-      "tag": "Serv0-Tro",
-      "type": "trojan",
-      "server": "www.visa.com",
-      "server_port": 443,
-      "password": "a247fca8-73ef-4452-941a-88ffe3dbb3fb",
-      "tls": {
-        "enabled": true,
-        "insecure": true,
-        "server_name": "tr.bzmtk.cloudns.biz"
-      },
-      "transport": {
-        "type": "ws",
-        "path": "/serv00-trojan?ed=2560",
-        "headers": {
-          "Host": "tr.bzmtk.cloudns.biz"
-        }
-      }
-    },
-    {
-      "tag": "Serv00-HY2",
+      "tag": "Serv00-HY2-0",
       "type": "hysteria2",
       "server": "128.204.218.63",
       "server_port": 38987,
       "password": "bbab4f95-eee8-42be-8119-df2dbdc7cab8",
+      "up_mbps": 10,
+      "down_mbps": 100,
+      "tls": {
+        "enabled": true,
+        "server_name": "www.bing.com",
+        "insecure": true,
+	"disable_sni": false,
+        "alpn": [
+          "h3"
+        ]
+      }
+    },
+    {
+      "tag": "Serv00-HY2-1",
+      "type": "hysteria2",
+      "server": "128.204.223.116",
+      "server_port": 27399,
+      "password": "35481b77-96f3-4dd9-b8e5-b74c6c6b17dd",
       "up_mbps": 10,
       "down_mbps": 100,
       "tls": {
