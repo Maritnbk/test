@@ -123,21 +123,9 @@
         "outbounds":[
           "auto",
           "direct",
-          "CF-tls-br",
-          "CF-tls-euch",
-          "CF-tls-myan",
-          "CF-tls-soeu",
-          "CF-tls-tw",
-          "CF-tls-usa",
-          "CF-tro",
-          "CF-trotls",
-          "CF-ws-africa",
-          "CF-ws-cis",
-          "CF-ws-euat",
-          "CF-ws-mt",
-          "CF-ws-qa",
-          "CF-ws-sg",
-          "CF-ws-www",
+          "CF-euch",
+          "CF-myan",
+          "CF-sou",
           "Serv00-Socks",
           "Serv00-HY2-0",
           "Serv00-HY2-1"
@@ -171,21 +159,9 @@
         "tag":"auto",
         "type":"urltest",
         "outbounds":[
-		  "CF-tls-br",
-          "CF-tls-euch",
-          "CF-tls-myan",
-          "CF-tls-soeu",
-          "CF-tls-tw",
-          "CF-tls-usa",
-          "CF-tro",
-          "CF-trotls",
-          "CF-ws-africa",
-          "CF-ws-cis",
-          "CF-ws-euat",
-          "CF-ws-mt",
-          "CF-ws-qa",
-          "CF-ws-sg",
-          "CF-ws-www",
+          "CF-euch",
+          "CF-myan",
+          "CF-sou",
           "Serv00-Socks",
           "Serv00-HY2-0",
           "Serv00-HY2-1"
@@ -198,43 +174,22 @@
         "type": "direct",
         "tag": "direct"
       },
-	   	{
-      "type": "vless",
-      "tag": "CF-tls-br",
-      "server": "www.visa.com.br",
-      "server_port": 2087,
-      "uuid": "bb9356e2-78c0-4cce-8e38-d182ea4e2e29",
-      "transport": {
-        "path": "/?ed=2560",
-        "type": "ws",
-        "headers": {
-          "Host": "vls.matyy.cloudns.biz"
-        }
-      },
-      "tls": {
-        "enabled": true,
-        "server_name": "vls.matyy.cloudns.biz",
-        "insecure": false
-      },
-      "network": "tcp",
-      "tcp_fast_open": false
-    },
     {
       "type": "vless",
-      "tag": "CF-tls-euch",
+      "tag": "CF-euch",
       "server": "www.visaeurope.ch",
       "server_port": 2083,
-      "uuid": "bb9356e2-78c0-4cce-8e38-d182ea4e2e29",
+      "uuid": "f4148541-3b5c-4ed2-95d4-38afa747c76b",
       "transport": {
         "path": "/?ed=2560",
         "type": "ws",
         "headers": {
-          "Host": "vls.matyy.cloudns.biz"
+          "Host": "cmvls.matyy.cloudns.biz"
         }
       },
       "tls": {
         "enabled": true,
-        "server_name": "vls.matyy.cloudns.biz",
+        "server_name": "cmvls.matyy.cloudns.biz",
         "insecure": false
       },
       "network": "tcp",
@@ -242,20 +197,20 @@
     },
     {
       "type": "vless",
-      "tag": "CF-tls-myan",
+      "tag": "CF-myan",
       "server": "myanmar.visa.com",
       "server_port": 8443,
-      "uuid": "bb9356e2-78c0-4cce-8e38-d182ea4e2e29",
+      "uuid": "f4148541-3b5c-4ed2-95d4-38afa747c76b",
       "transport": {
         "path": "/?ed=2560",
         "type": "ws",
         "headers": {
-          "Host": "vls.matyy.cloudns.biz"
+          "Host": "cmvls.matyy.cloudns.biz"
         }
       },
       "tls": {
         "enabled": true,
-        "server_name": "vls.matyy.cloudns.biz",
+        "server_name": "cmvls.matyy.cloudns.biz",
         "insecure": false
       },
       "network": "tcp",
@@ -263,212 +218,21 @@
     },
     {
       "type": "vless",
-      "tag": "CF-tls-soeu",
+      "tag": "CF-sou",
       "server": "www.visasoutheasteurope.com",
       "server_port": 2096,
-      "uuid": "bb9356e2-78c0-4cce-8e38-d182ea4e2e29",
+      "uuid": "f4148541-3b5c-4ed2-95d4-38afa747c76b",
       "transport": {
         "path": "/?ed=2560",
         "type": "ws",
         "headers": {
-          "Host": "vls.matyy.cloudns.biz"
+          "Host": "cmvls.matyy.cloudns.biz"
         }
       },
       "tls": {
         "enabled": true,
-        "server_name": "vls.matyy.cloudns.biz",
+        "server_name": "cmvls.matyy.cloudns.biz",
         "insecure": false
-      },
-      "network": "tcp",
-      "tcp_fast_open": false
-    },
-    {
-      "type": "vless",
-      "tag": "CF-tls-tw",
-      "server": "www.visa.com.tw",
-      "server_port": 2053,
-      "uuid": "bb9356e2-78c0-4cce-8e38-d182ea4e2e29",
-      "transport": {
-        "path": "/?ed=2560",
-        "type": "ws",
-        "headers": {
-          "Host": "vls.matyy.cloudns.biz"
-        }
-      },
-      "tls": {
-        "enabled": true,
-        "server_name": "vls.matyy.cloudns.biz",
-        "insecure": false
-      },
-      "network": "tcp",
-      "tcp_fast_open": false
-    },
-    {
-      "type": "vless",
-      "tag": "CF-tls-usa",
-      "server": "usa.visa.com",
-      "server_port": 443,
-      "uuid": "bb9356e2-78c0-4cce-8e38-d182ea4e2e29",
-      "transport": {
-        "path": "/?ed=2560",
-        "type": "ws",
-        "headers": {
-          "Host": "vls.matyy.cloudns.biz"
-        }
-      },
-      "tls": {
-        "enabled": true,
-        "server_name": "vls.matyy.cloudns.biz",
-        "insecure": false
-      },
-      "network": "tcp",
-      "tcp_fast_open": false
-    },
-    {
-      "type": "trojan",
-      "tag": "CF-tro",
-      "server": "www.visa.com.sg",
-      "server_port": 8880,
-      "password": "CUacv5ykWBc9B9",
-      "transport": {
-        "type": "ws",
-        "path": "/?ed=2560",
-        "headers": {
-          "Host": "tro.matyy.cloudns.biz"
-        }
-      },
-      "network": "tcp",
-      "tcp_fast_open": false
-    },
-    {
-      "type": "trojan",
-      "tag": "CF-trotls",
-      "server": "www.visa.com.sg",
-      "server_port": 8443,
-      "password": "CUacv5ykWBc9B9",
-      "transport": {
-        "type": "ws",
-        "path": "/?ed=2560",
-        "headers": {
-          "Host": "tro.matyy.cloudns.biz"
-        }
-      },
-      "tls": {
-        "enabled": true,
-        "server_name": "tro.matyy.cloudns.biz",
-        "insecure": false
-      },
-      "network": "tcp",
-      "tcp_fast_open": false
-    },
-    {
-      "type": "vless",
-      "tag": "CF-ws-africa",
-      "server": "africa.visa.com",
-      "server_port": 8880,
-      "uuid": "bb9356e2-78c0-4cce-8e38-d182ea4e2e29",
-      "transport": {
-        "path": "/?ed=2560",
-        "type": "ws",
-        "headers": {
-          "Host": "vls.matyy.cloudns.biz"
-        }
-      },
-      "network": "tcp",
-      "tcp_fast_open": false
-    },
-    {
-      "type": "vless",
-      "tag": "CF-ws-cis",
-      "server": "cis.visa.com",
-      "server_port": 8080,
-      "uuid": "bb9356e2-78c0-4cce-8e38-d182ea4e2e29",
-      "transport": {
-        "path": "/?ed=2560",
-        "type": "ws",
-        "headers": {
-          "Host": "vls.matyy.cloudns.biz"
-        }
-      },
-      "network": "tcp",
-      "tcp_fast_open": false
-    },
-    {
-      "type": "vless",
-      "tag": "CF-ws-euat",
-      "server": "www.visaeurope.at",
-      "server_port": 2082,
-      "uuid": "bb9356e2-78c0-4cce-8e38-d182ea4e2e29",
-      "transport": {
-        "path": "/?ed=2560",
-        "type": "ws",
-        "headers": {
-          "Host": "vls.matyy.cloudns.biz"
-        }
-      },
-      "network": "tcp",
-      "tcp_fast_open": false
-    },
-    {
-      "type": "vless",
-      "tag": "CF-ws-mt",
-      "server": "www.visa.com.mt",
-      "server_port": 2086,
-      "uuid": "bb9356e2-78c0-4cce-8e38-d182ea4e2e29",
-      "transport": {
-        "path": "/?ed=2560",
-        "type": "ws",
-        "headers": {
-          "Host": "vls.matyy.cloudns.biz"
-        }
-      },
-      "network": "tcp",
-      "tcp_fast_open": false
-    },
-    {
-      "type": "vless",
-      "tag": "CF-ws-qa",
-      "server": "qa.visamiddleeast.com",
-      "server_port": 2095,
-      "uuid": "bb9356e2-78c0-4cce-8e38-d182ea4e2e29",
-      "transport": {
-        "path": "/?ed=2560",
-        "type": "ws",
-        "headers": {
-          "Host": "vls.matyy.cloudns.biz"
-        }
-      },
-      "network": "tcp",
-      "tcp_fast_open": false
-    },
-    {
-      "type": "vless",
-      "tag": "CF-ws-sg",
-      "server": "www.visa.com.sg",
-      "server_port": 2052,
-      "uuid": "bb9356e2-78c0-4cce-8e38-d182ea4e2e29",
-      "transport": {
-        "path": "/?ed=2560",
-        "type": "ws",
-        "headers": {
-          "Host": "vls.matyy.cloudns.biz"
-        }
-      },
-      "network": "tcp",
-      "tcp_fast_open": false
-    },
-    {
-      "type": "vless",
-      "tag": "CF-ws-www",
-      "server": "www.visa.com",
-      "server_port": 80,
-      "uuid": "bb9356e2-78c0-4cce-8e38-d182ea4e2e29",
-      "transport": {
-        "path": "/?ed=2560",
-        "type": "ws",
-        "headers": {
-          "Host": "vls.matyy.cloudns.biz"
-        }
       },
       "network": "tcp",
       "tcp_fast_open": false
