@@ -126,7 +126,7 @@
           "CF-euch",
           "CF-myan",
           "CF-sou",
-          "Serv00-Socks",
+	  "CF-sg",
           "Serv00-HY2-0",
           "Serv00-HY2-1"
         ]
@@ -136,7 +136,7 @@
         "type":"selector",
         "outbounds":[
           "Proxy",
-		  "direct"
+          "direct"
         ]
       },
 	  {
@@ -144,7 +144,7 @@
         "type":"selector",
         "outbounds":[
           "direct",
-		  "Proxy"
+	  "Proxy"
         ]
       },
       {
@@ -162,7 +162,7 @@
           "CF-euch",
           "CF-myan",
           "CF-sou",
-          "Serv00-Socks",
+          "CF-sg",
           "Serv00-HY2-0",
           "Serv00-HY2-1"
         ],
@@ -238,13 +238,23 @@
       "tcp_fast_open": false
     },
     {
-      "tag": "Serv00-Socks",      
-      "type": "socks",
-      "server": "s0.serv00.com",
-      "server_port": 8389,
-      "version": "5",
-      "username": "martin",
-      "password": "serv090",
+      "type": "vless",
+      "tag": "CF-sg",
+      "server": "www.visa.com.sg",
+      "server_port": 2096,
+      "uuid": "f4148541-3b5c-4ed2-95d4-38afa747c76b",
+      "transport": {
+        "path": "/?ed=2560",
+        "type": "ws",
+        "headers": {
+          "Host": "cmvls.matyy.cloudns.biz"
+        }
+      },
+      "tls": {
+        "enabled": true,
+        "server_name": "cmvls.matyy.cloudns.biz",
+        "insecure": false
+      },
       "network": "tcp",
       "tcp_fast_open": false
     },
@@ -252,8 +262,8 @@
       "tag": "Serv00-HY2-0",
       "type": "hysteria2",
       "server": "128.204.218.63",
-      "server_port": 38987,
-      "password": "bbab4f95-eee8-42be-8119-df2dbdc7cab8",
+      "server_port": 39066,
+      "password": "25eb4f9f-1df5-4709-859e-1a16a52a9b27",
       "up_mbps": 10,
       "down_mbps": 100,
       "tls": {
@@ -270,8 +280,8 @@
       "tag": "Serv00-HY2-1",
       "type": "hysteria2",
       "server": "128.204.223.116",
-      "server_port": 27399,
-      "password": "35481b77-96f3-4dd9-b8e5-b74c6c6b17dd",
+      "server_port": 30598,
+      "password": "16edc4fc-de7d-487d-8c87-0c4113fe375e",
       "up_mbps": 10,
       "down_mbps": 100,
       "tls": {
