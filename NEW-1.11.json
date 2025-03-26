@@ -279,7 +279,7 @@
     {
       "tag": "Serv00-HY2-1",
       "type": "hysteria2",
-      "server": "128.204.223.115",
+      "server": "128.204.223.116",
       "server_port": 30598,
       "password": "16edc4fc-de7d-487d-8c87-0c4113fe375e",
       "up_mbps": 10,
