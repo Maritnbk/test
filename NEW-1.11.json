@@ -126,9 +126,7 @@
           "CF-euch",
           "CF-myan",
           "CF-sou",
-	  "CF-sg",
-          "Serv00-HY2-0",
-          "Serv00-HY2-1"
+	  "CF-sg"
         ]
       },
       {
@@ -162,9 +160,7 @@
           "CF-euch",
           "CF-myan",
           "CF-sou",
-          "CF-sg",
-          "Serv00-HY2-0",
-          "Serv00-HY2-1"
+          "CF-sg"
         ],
         "url": "http://www.gstatic.com/generate_204",
         "interval": "10m",
@@ -257,42 +253,6 @@
       },
       "network": "tcp",
       "tcp_fast_open": false
-    },
-    {
-      "tag": "Serv00-HY2-0",
-      "type": "hysteria2",
-      "server": "128.204.218.63",
-      "server_port": 39066,
-      "password": "25eb4f9f-1df5-4709-859e-1a16a52a9b27",
-      "up_mbps": 10,
-      "down_mbps": 100,
-      "tls": {
-        "enabled": true,
-        "server_name": "www.bing.com",
-        "insecure": true,
-	"disable_sni": false,
-        "alpn": [
-          "h3"
-        ]
-      }
-    },
-    {
-      "tag": "Serv00-HY2-1",
-      "type": "hysteria2",
-      "server": "128.204.223.116",
-      "server_port": 30598,
-      "password": "16edc4fc-de7d-487d-8c87-0c4113fe375e",
-      "up_mbps": 10,
-      "down_mbps": 100,
-      "tls": {
-        "enabled": true,
-        "server_name": "www.bing.com",
-        "insecure": true,
-	"disable_sni": false,
-        "alpn": [
-          "h3"
-        ]
-      }
     }
     ],
     "route": {
