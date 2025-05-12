@@ -126,7 +126,8 @@
           "CF-euch",
           "CF-myan",
           "CF-sou",
-	  "CF-sg"
+	  "CF-sg",
+	  "WebHost"
         ]
       },
       {
@@ -160,7 +161,8 @@
           "CF-euch",
           "CF-myan",
           "CF-sou",
-          "CF-sg"
+          "CF-sg",
+	  "WebHost"
         ],
         "url": "http://www.gstatic.com/generate_204",
         "interval": "10m",
@@ -253,6 +255,26 @@
       },
       "network": "tcp",
       "tcp_fast_open": false
+    },
+    {
+      "tag": "WebHost",
+      "type": "vless",
+      "server": "www.visa.com.tw",
+      "server_port": 443,
+      "uuid": "cc236928-2426-48df-a8b4-7e27c5dd65a3",
+      "packet_encoding": "xudp",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "server_name": "wbht.bktyy.dpdns.org"
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/",
+        "headers": {
+          "Host": "wbht.bktyy.dpdns.org"
+        }
+      }
     }
     ],
     "route": {
