@@ -12,156 +12,167 @@
         "external_ui_download_detour": "",
         "default_mode": "rule"
       },
-      "cache_file": {
-        "enabled": true,
-        "store_fakeip": false
+    "cache_file": {
+      "enabled": true,
+      "store_fakeip": true,
+      "store_rdrc": true
       }
     },
     "dns": {
+      "fakeip": {
+        "enabled": true,
+        "inet4_range": "198.18.0.0/15",
+        "inet6_range": "fc00::/18"
+      },
       "servers": [
         {
-          "tag": "proxyDns",
-          "address": "tls://8.8.8.8",
-          "detour": "Proxy"
+          "tag": "google",
+          "address": "tls://8.8.8.8"
         },
         {
-          "tag": "localDns",
+          "tag": "local",
           "address": "https://223.5.5.5/dns-query",
           "detour": "direct"
         },
         {
-          "tag": "block",
-          "address": "rcode://success"
+          "tag": "fakeip",
+          "address": "fakeip"
         }
       ],
       "rules": [
         {
-          "rule_set": "geosite-category-ads-all",
-          "server": "block"
-        },
-        {
           "outbound": "any",
-          "server": "localDns",
-          "disable_cache": true
-        },
-        {
-          "rule_set": "geosite-cn",
-          "server": "localDns"
+          "server": "local"
         },
         {
           "clash_mode": "direct",
-          "server": "localDns"
+          "server": "local"
         },
         {
           "clash_mode": "global",
-          "server": "proxyDns"
+          "server": "google"
         },
         {
-          "rule_set": "geosite-geolocation-!cn",
-          "server": "proxyDns"
+          "query_type": [
+            "A",
+            "AAAA"
+          ],
+          "rule_set": "geosite-cn",
+          "server": "fakeip"
+        },
+        {
+          "rule_set": "geosite-cn",
+          "server": "local"
+        },
+        {
+          "type": "logical",
+          "mode": "and",
+          "rules": [
+            {
+              "rule_set": "geosite-geolocation-!cn",
+              "invert": true
+            },
+            {
+              "rule_set": "geoip-cn"
+            }
+          ],
+          "server": "google",
+          "client_subnet": "114.114.114.114/24"
+        },
+        {
+          "query_type": [
+            "A",
+            "AAAA"
+          ],
+          "server": "fakeip"
         }
       ],
-      "final": "localDns",
-      "strategy": "ipv4_only"
+      "independent_cache": true,
+      "strategy": "prefer_ipv4"
     },
     "inbounds": [
       {
+        "tag": "tun-in",
         "type": "tun",
         "address": [
-		  "172.19.0.1/30",
-		  "fdfe:dcba:9876::1/126"
+          "172.19.0.0/30",
+          "fdfe:dcba:9876::0/126"
         ],
-        "mtu": 9000,
-        "auto_route": true,
-        "strict_route": false,
-        "sniff": true,
-        "endpoint_independent_nat": false,
         "stack": "system",
+        "auto_route": true,
+        "strict_route": true,
         "platform": {
           "http_proxy": {
             "enabled": true,
             "server": "127.0.0.1",
-            "server_port": 2080
+            "server_port": 7890
           }
         }
       },
       {
+        "tag": "mixed-in",
         "type": "mixed",
         "listen": "127.0.0.1",
-        "listen_port": 2080,
-        "sniff": true,
-        "users": []
+        "listen_port": 7890
       }
     ],
-    // 以上为头部
-    // 以下为分流规则----
     "outbounds": [
       {
-        "tag": "Proxy",
-        "type": "selector",
-        "outbounds": [
+        "tag":"Proxy",
+        "type":"selector",
+        "outbounds":[
           "auto",
           "direct",
-          "CF-tls-br",
-          "CF-tls-euch",
-          "CF-tls-myan",
-          "CF-tls-soeu",
-          "CF-tls-tw",
-          "CF-tls-usa",
-          "CF-tro",
-          "CF-trotls",
-          "CF-ws-africa",
-          "CF-ws-cis",
-          "CF-ws-euat",
-          "CF-ws-mt",
-          "CF-ws-qa",
-          "CF-ws-sg",
-          "CF-ws-www",
-          "Serv00-Socks",
-          "Serv00-HY2-0",
-          "Serv00-HY2-1"
+          "CF-euch",
+          "CF-myan",
+          "CF-sou",
+	  "CF-sg",
+          "IDX-tls-443",
+          "IDX-tls-8443",
+          "IDX-tls-2053",
+          "IDX-tls-2083",
+          "IDX-tls-2087",
+          "IDX-tls-2096"
         ]
       },
       {
-        "tag": "Microsoft",
-        "type": "selector",
-        "outbounds": [
+        "tag":"Microsoft",
+        "type":"selector",
+        "outbounds":[
           "Proxy",
           "direct"
         ]
       },
-      {
-        "tag": "AdBlock",
-        "type": "selector",
-        "outbounds": [
-          "block",
-          "direct"
+	  {
+        "tag":"Apple",
+        "type":"selector",
+        "outbounds":[
+          "direct",
+	  "Proxy"
         ]
       },
-      // 自动---
       {
-        "tag": "auto",
-        "type": "urltest",
-        "outbounds": [
+        "tag":"China",
+        "type":"selector",
+        "outbounds":[
           "direct",
-          "CF-tls-br",
-          "CF-tls-euch",
-          "CF-tls-myan",
-          "CF-tls-soeu",
-          "CF-tls-tw",
-          "CF-tls-usa",
-          "CF-tro",
-          "CF-trotls",
-          "CF-ws-africa",
-          "CF-ws-cis",
-          "CF-ws-euat",
-          "CF-ws-mt",
-          "CF-ws-qa",
-          "CF-ws-sg",
-          "CF-ws-www",
-          "Serv00-Socks",
-          "Serv00-HY2-0",
-          "Serv00-HY2-1"
+          "Proxy"
+        ]
+      },
+      {
+        "tag":"auto",
+        "type":"urltest",
+        "outbounds":[
+          "CF-euch",
+          "CF-myan",
+          "CF-sou",
+          "CF-sg",
+          "IDX-tls-443",
+          "IDX-tls-8443",
+          "IDX-tls-2053",
+          "IDX-tls-2083",
+          "IDX-tls-2087",
+          "IDX-tls-2096"
         ],
         "url": "http://www.gstatic.com/generate_204",
         "interval": "10m",
@@ -171,53 +182,22 @@
         "type": "direct",
         "tag": "direct"
       },
-      {
-        "type": "dns",
-        "tag": "dns-out"
-      },
-      {
-        "type": "block",
-        "tag": "block"
-      },
-      //以上为分流规则
-      //以下为节点配置
- 	{
-      "type": "vless",
-      "tag": "CF-tls-br",
-      "server": "www.visa.com.br",
-      "server_port": 2087,
-      "uuid": "bb9356e2-78c0-4cce-8e38-d182ea4e2e29",
-      "transport": {
-        "path": "/?ed=2560",
-        "type": "ws",
-        "headers": {
-          "Host": "vls.matyy.cloudns.biz"
-        }
-      },
-      "tls": {
-        "enabled": true,
-        "server_name": "vls.matyy.cloudns.biz",
-        "insecure": false
-      },
-      "network": "tcp",
-      "tcp_fast_open": false
-    },
     {
       "type": "vless",
-      "tag": "CF-tls-euch",
+      "tag": "CF-euch",
       "server": "www.visaeurope.ch",
       "server_port": 2083,
-      "uuid": "bb9356e2-78c0-4cce-8e38-d182ea4e2e29",
+      "uuid": "f4148541-3b5c-4ed2-95d4-38afa747c76b",
       "transport": {
         "path": "/?ed=2560",
         "type": "ws",
         "headers": {
-          "Host": "vls.matyy.cloudns.biz"
+          "Host": "cmvls.matyy.cloudns.biz"
         }
       },
       "tls": {
         "enabled": true,
-        "server_name": "vls.matyy.cloudns.biz",
+        "server_name": "cmvls.matyy.cloudns.biz",
         "insecure": false
       },
       "network": "tcp",
@@ -225,20 +205,20 @@
     },
     {
       "type": "vless",
-      "tag": "CF-tls-myan",
+      "tag": "CF-myan",
       "server": "myanmar.visa.com",
       "server_port": 8443,
-      "uuid": "bb9356e2-78c0-4cce-8e38-d182ea4e2e29",
+      "uuid": "f4148541-3b5c-4ed2-95d4-38afa747c76b",
       "transport": {
         "path": "/?ed=2560",
         "type": "ws",
         "headers": {
-          "Host": "vls.matyy.cloudns.biz"
+          "Host": "cmvls.matyy.cloudns.biz"
         }
       },
       "tls": {
         "enabled": true,
-        "server_name": "vls.matyy.cloudns.biz",
+        "server_name": "cmvls.matyy.cloudns.biz",
         "insecure": false
       },
       "network": "tcp",
@@ -246,20 +226,20 @@
     },
     {
       "type": "vless",
-      "tag": "CF-tls-soeu",
+      "tag": "CF-sou",
       "server": "www.visasoutheasteurope.com",
       "server_port": 2096,
-      "uuid": "bb9356e2-78c0-4cce-8e38-d182ea4e2e29",
+      "uuid": "f4148541-3b5c-4ed2-95d4-38afa747c76b",
       "transport": {
         "path": "/?ed=2560",
         "type": "ws",
         "headers": {
-          "Host": "vls.matyy.cloudns.biz"
+          "Host": "cmvls.matyy.cloudns.biz"
         }
       },
       "tls": {
         "enabled": true,
-        "server_name": "vls.matyy.cloudns.biz",
+        "server_name": "cmvls.matyy.cloudns.biz",
         "insecure": false
       },
       "network": "tcp",
@@ -267,264 +247,194 @@
     },
     {
       "type": "vless",
-      "tag": "CF-tls-tw",
-      "server": "www.visa.com.tw",
-      "server_port": 2053,
-      "uuid": "bb9356e2-78c0-4cce-8e38-d182ea4e2e29",
+      "tag": "CF-sg",
+      "server": "www.visa.com.sg",
+      "server_port": 2096,
+      "uuid": "f4148541-3b5c-4ed2-95d4-38afa747c76b",
       "transport": {
         "path": "/?ed=2560",
         "type": "ws",
         "headers": {
-          "Host": "vls.matyy.cloudns.biz"
+          "Host": "cmvls.matyy.cloudns.biz"
         }
       },
       "tls": {
         "enabled": true,
-        "server_name": "vls.matyy.cloudns.biz",
+        "server_name": "cmvls.matyy.cloudns.biz",
         "insecure": false
       },
       "network": "tcp",
       "tcp_fast_open": false
     },
     {
-      "type": "vless",
-      "tag": "CF-tls-usa",
-      "server": "usa.visa.com",
+      "tag": "IDX-tls-443",
+      "type": "vmess",
+      "server": "104.16.0.0",
       "server_port": 443,
-      "uuid": "bb9356e2-78c0-4cce-8e38-d182ea4e2e29",
-      "transport": {
-        "path": "/?ed=2560",
-        "type": "ws",
-        "headers": {
-          "Host": "vls.matyy.cloudns.biz"
-        }
-      },
+      "uuid": "1b734682-5b2f-418b-945b-a8055874fc05",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
       "tls": {
         "enabled": true,
-        "server_name": "vls.matyy.cloudns.biz",
-        "insecure": false
-      },
-      "network": "tcp",
-      "tcp_fast_open": false
-    },
-    {
-      "type": "trojan",
-      "tag": "CF-tro",
-      "server": "www.visa.com.sg",
-      "server_port": 8880,
-      "password": "CUacv5ykWBc9B9",
-      "transport": {
-        "type": "ws",
-        "path": "/?ed=2560",
-        "headers": {
-          "Host": "tro.matyy.cloudns.biz"
-        }
-      },
-      "network": "tcp",
-      "tcp_fast_open": false
-    },
-    {
-      "type": "trojan",
-      "tag": "CF-trotls",
-      "server": "www.visa.com.sg",
-      "server_port": 8443,
-      "password": "CUacv5ykWBc9B9",
-      "transport": {
-        "type": "ws",
-        "path": "/?ed=2560",
-        "headers": {
-          "Host": "tro.matyy.cloudns.biz"
-        }
-      },
-      "tls": {
-        "enabled": true,
-        "server_name": "tro.matyy.cloudns.biz",
-        "insecure": false
-      },
-      "network": "tcp",
-      "tcp_fast_open": false
-    },
-    {
-      "type": "vless",
-      "tag": "CF-ws-africa",
-      "server": "africa.visa.com",
-      "server_port": 8880,
-      "uuid": "bb9356e2-78c0-4cce-8e38-d182ea4e2e29",
-      "transport": {
-        "path": "/?ed=2560",
-        "type": "ws",
-        "headers": {
-          "Host": "vls.matyy.cloudns.biz"
-        }
-      },
-      "network": "tcp",
-      "tcp_fast_open": false
-    },
-    {
-      "type": "vless",
-      "tag": "CF-ws-cis",
-      "server": "cis.visa.com",
-      "server_port": 8080,
-      "uuid": "bb9356e2-78c0-4cce-8e38-d182ea4e2e29",
-      "transport": {
-        "path": "/?ed=2560",
-        "type": "ws",
-        "headers": {
-          "Host": "vls.matyy.cloudns.biz"
-        }
-      },
-      "network": "tcp",
-      "tcp_fast_open": false
-    },
-    {
-      "type": "vless",
-      "tag": "CF-ws-euat",
-      "server": "www.visaeurope.at",
-      "server_port": 2082,
-      "uuid": "bb9356e2-78c0-4cce-8e38-d182ea4e2e29",
-      "transport": {
-        "path": "/?ed=2560",
-        "type": "ws",
-        "headers": {
-          "Host": "vls.matyy.cloudns.biz"
-        }
-      },
-      "network": "tcp",
-      "tcp_fast_open": false
-    },
-    {
-      "type": "vless",
-      "tag": "CF-ws-mt",
-      "server": "www.visa.com.mt",
-      "server_port": 2086,
-      "uuid": "bb9356e2-78c0-4cce-8e38-d182ea4e2e29",
-      "transport": {
-        "path": "/?ed=2560",
-        "type": "ws",
-        "headers": {
-          "Host": "vls.matyy.cloudns.biz"
-        }
-      },
-      "network": "tcp",
-      "tcp_fast_open": false
-    },
-    {
-      "type": "vless",
-      "tag": "CF-ws-qa",
-      "server": "qa.visamiddleeast.com",
-      "server_port": 2095,
-      "uuid": "bb9356e2-78c0-4cce-8e38-d182ea4e2e29",
-      "transport": {
-        "path": "/?ed=2560",
-        "type": "ws",
-        "headers": {
-          "Host": "vls.matyy.cloudns.biz"
-        }
-      },
-      "network": "tcp",
-      "tcp_fast_open": false
-    },
-    {
-      "type": "vless",
-      "tag": "CF-ws-sg",
-      "server": "www.visa.com.sg",
-      "server_port": 2052,
-      "uuid": "bb9356e2-78c0-4cce-8e38-d182ea4e2e29",
-      "transport": {
-        "path": "/?ed=2560",
-        "type": "ws",
-        "headers": {
-          "Host": "vls.matyy.cloudns.biz"
-        }
-      },
-      "network": "tcp",
-      "tcp_fast_open": false
-    },
-    {
-      "type": "vless",
-      "tag": "CF-ws-www",
-      "server": "www.visa.com",
-      "server_port": 80,
-      "uuid": "bb9356e2-78c0-4cce-8e38-d182ea4e2e29",
-      "transport": {
-        "path": "/?ed=2560",
-        "type": "ws",
-        "headers": {
-          "Host": "vls.matyy.cloudns.biz"
-        }
-      },
-      "network": "tcp",
-      "tcp_fast_open": false
-    },
-    {
-      "tag": "Serv00-Socks",      
-      "type": "socks",
-      "server": "s0.serv00.com",
-      "server_port": 8389,
-      "version": "5",
-      "username": "martin",
-      "password": "serv090",
-      "network": "tcp",
-      "tcp_fast_open": false
-    },
-    {
-      "tag": "Serv00-HY2-0",
-      "type": "hysteria2",
-      "server": "128.204.218.63",
-      "server_port": 38987,
-      "password": "bbab4f95-eee8-42be-8119-df2dbdc7cab8",
-      "up_mbps": 10,
-      "down_mbps": 100,
-      "tls": {
-        "enabled": true,
-        "server_name": "www.bing.com",
         "insecure": true,
-	"disable_sni": false,
-        "alpn": [
-          "h3"
-        ]
+        "server_name": "idx.matyy.dpdns.org"
+      },
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "idx.matyy.dpdns.org"
+        },
+        "path": "/1b734682-5b2f-418b-945b-a8055874fc05-vm",
+        "early_data_header_name": "Sec-WebSocket-Protocol",
+        "max_early_data": 2048
       }
     },
     {
-      "tag": "Serv00-HY2-1",
-      "type": "hysteria2",
-      "server": "128.204.223.116",
-      "server_port": 27399,
-      "password": "35481b77-96f3-4dd9-b8e5-b74c6c6b17dd",
-      "up_mbps": 10,
-      "down_mbps": 100,
+      "tag": "IDX-tls-8443",
+      "type": "vmess",
+      "server": "104.17.0.0",
+      "server_port": 8443,
+      "uuid": "1b734682-5b2f-418b-945b-a8055874fc05",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
       "tls": {
         "enabled": true,
-        "server_name": "www.bing.com",
         "insecure": true,
-	"disable_sni": false,
-        "alpn": [
-          "h3"
-        ]
+        "server_name": "idx.matyy.dpdns.org"
+      },
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "idx.matyy.dpdns.org"
+        },
+        "path": "/1b734682-5b2f-418b-945b-a8055874fc05-vm",
+        "early_data_header_name": "Sec-WebSocket-Protocol",
+        "max_early_data": 2048
+      }
+    },
+    {
+      "tag": "IDX-tls-2053",
+      "type": "vmess",
+      "server": "104.18.0.0",
+      "server_port": 2053,
+      "uuid": "1b734682-5b2f-418b-945b-a8055874fc05",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "idx.matyy.dpdns.org"
+      },
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "idx.matyy.dpdns.org"
+        },
+        "path": "/1b734682-5b2f-418b-945b-a8055874fc05-vm",
+        "early_data_header_name": "Sec-WebSocket-Protocol",
+        "max_early_data": 2048
+      }
+    },
+    {
+      "tag": "IDX-tls-2083",
+      "type": "vmess",
+      "server": "104.19.0.0",
+      "server_port": 2083,
+      "uuid": "1b734682-5b2f-418b-945b-a8055874fc05",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "idx.matyy.dpdns.org"
+      },
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "idx.matyy.dpdns.org"
+        },
+        "path": "/1b734682-5b2f-418b-945b-a8055874fc05-vm",
+        "early_data_header_name": "Sec-WebSocket-Protocol",
+        "max_early_data": 2048
+      }
+    },
+    {
+      "tag": "IDX-tls-2087",
+      "type": "vmess",
+      "server": "104.20.0.0",
+      "server_port": 2087,
+      "uuid": "1b734682-5b2f-418b-945b-a8055874fc05",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "idx.matyy.dpdns.org"
+      },
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "idx.matyy.dpdns.org"
+        },
+        "path": "/1b734682-5b2f-418b-945b-a8055874fc05-vm",
+        "early_data_header_name": "Sec-WebSocket-Protocol",
+        "max_early_data": 2048
+      }
+    },
+    {
+      "tag": "IDX-tls-2096",
+      "type": "vmess",
+      "server": "[2606:4700::]",
+      "server_port": 2096,
+      "uuid": "1b734682-5b2f-418b-945b-a8055874fc05",
+      "security": "auto",
+      "alter_id": 0,
+      "packet_encoding": "xudp",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "idx.matyy.dpdns.org"
+      },
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "idx.matyy.dpdns.org"
+        },
+        "path": "/1b734682-5b2f-418b-945b-a8055874fc05-vm",
+        "early_data_header_name": "Sec-WebSocket-Protocol",
+        "max_early_data": 2048
       }
     }
     ],
-  //结尾
     "route": {
       "auto_detect_interface": true,
       "final": "Proxy",
       "rules": [
         {
+          "inbound": ["tun-in", "mixed-in"],
+          "action": "sniff"
+        },
+        {
           "type": "logical",
           "mode": "or",
-          "rules": [
+          "rules":[
             {
-              "port": 53
+              "port":53
             },
             {
               "protocol": "dns"
             }
           ],
-          "outbound": "dns-out"
+          "action": "hijack-dns"
         },
         {
           "rule_set": "geosite-category-ads-all",
-          "outbound": "AdBlock"
+          "action": "reject"
         },
         {
           "clash_mode": "direct",
@@ -544,157 +454,91 @@
           "outbound": "direct"
         },
         {
-          "rule_set": [
-            "geosite-youtube",
-	    "geosite-docker",
-            "geosite-github",
-	    "geosite-openai",
-            "geosite-google",
-	    "geosite-twitter",
-	    "geosite-telegram",
-	    "geosite-bahamut",
-	    "geosite-spotify",
-	    "geosite-tiktok",
-            "geosite-netflix",
-	    "geosite-disney",
-	    "geosite-hbo",
-            "geosite-primevideo",
-	    "geosite-facebook",
-	    "geosite-javdb",
-	    "geosite-category-games"
-          ],
-          "outbound": "Proxy"
-        },
-        {
-          "rule_set": [
-            "geoip-telegram",
-	    "geoip-twitter",
-            "geoip-google",
-            "geoip-netflix",
-	    "geoip-facebook"
-          ],
-          "outbound": "Proxy"
-        },
-        {
-          "rule_set": [
-            "geosite-bilibili",
-            "geosite-bilibili",
-	    "geosite-jd",
-	    "geosite-alibaba"
-          ],
+          "ip_is_private": true,
           "outbound": "direct"
         },
         {
-          "rule_set": [
-            "geosite-apple",
-	    "geosite-microsoft",
-            "geosite-amazon"
-          ],
+          "rule_set": "geosite-openai",
+          "outbound": "Proxy"
+        },
+        {
+          "rule_set": ["geosite-youtube", "geoip-google", "geosite-google", "geosite-github", "geosite-docker"],
+          "outbound": "Proxy"
+        },
+        {
+          "rule_set": ["geoip-telegram", "geosite-telegram"],
+          "outbound": "Proxy"
+        },
+        {
+          "rule_set": ["geoip-twitter", "geosite-twitter"],
+          "outbound": "Proxy"
+        },
+        {
+          "rule_set":["geoip-facebook", "geosite-facebook"],
+          "outbound": "Proxy"
+        },
+        {
+          "rule_set": "geosite-bilibili",
+          "outbound": "China"
+        },
+        {
+          "rule_set": "geosite-bahamut",
+          "outbound": "Proxy"
+        },
+        {
+          "rule_set": "geosite-spotify",
+          "outbound": "Proxy"
+        },
+        {
+          "rule_set": "geosite-tiktok",
+          "outbound": "Proxy"
+        },
+        {
+          "rule_set": ["geoip-netflix", "geosite-netflix"],
+          "outbound": "Proxy"
+        },
+        {
+          "rule_set": "geosite-disney",
+          "outbound": "Proxy"
+        },
+        {
+          "rule_set": ["geoip-apple", "geosite-apple", "geosite-amazon"],
+          "outbound": "Apple"
+        },
+        {
+          "rule_set": "geosite-microsoft",
           "outbound": "Microsoft"
+        },
+        {
+          "rule_set": ["geosite-category-games", "geosite-dmm"],
+          "outbound": "Proxy"
+        },
+        {
+          "rule_set": ["geosite-hbo", "geosite-primevideo", "geosite-javdb"],
+          "outbound": "Proxy"
         },
         {
           "rule_set": "geosite-geolocation-!cn",
           "outbound": "Proxy"
         },
         {
-          "rule_set": "geosite-private",
-          "outbound": "direct"
-        },
-        {
-          "ip_is_private": true,
-          "outbound": "direct"
-        },
-        {
-          "rule_set": [
-            "geoip-cn",
-            "geosite-cn"
-          ],
-          "outbound": "direct"
+          "rule_set": ["geoip-cn", "geosite-cn", "geosite-alibaba", "geosite-jd"],
+          "outbound": "China"
         }
       ],
       "rule_set": [
         {
-          "tag": "geoip-google",
+          "tag": "geosite-category-ads-all",
           "type": "remote",
           "format": "binary",
-          "url": "https://github.bzmtk.cloudns.biz/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geoip/google.srs",
-          "download_detour": "direct"
-        },
-        {
-          "tag": "geoip-telegram",
-          "type": "remote",
-          "format": "binary",
-          "url": "https://github.bzmtk.cloudns.biz/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geoip/telegram.srs",
-          "download_detour": "direct"
-        },
-        {
-          "tag": "geoip-twitter",
-          "type": "remote",
-          "format": "binary",
-          "url": "https://github.bzmtk.cloudns.biz/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geoip/twitter.srs",
-          "download_detour": "direct"
-        },
-        {
-          "tag": "geoip-facebook",
-          "type": "remote",
-          "format": "binary",
-          "url": "https://github.bzmtk.cloudns.biz/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geoip/facebook.srs",
-          "download_detour": "direct"
-        },
-        {
-          "tag": "geoip-netflix",
-          "type": "remote",
-          "format": "binary",
-          "url": "https://github.bzmtk.cloudns.biz/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geoip/netflix.srs",
-          "download_detour": "direct"
-        },
-        {
-          "tag": "geoip-cn",
-          "type": "remote",
-          "format": "binary",
-          "url": "https://github.bzmtk.cloudns.biz/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geoip/cn.srs",
-          "download_detour": "direct"
-        },
-		{
-          "tag": "geosite-docker",
-          "type": "remote",
-          "format": "binary",
-          "url": "https://github.bzmtk.cloudns.biz/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/docker.srs",
-          "download_detour": "direct"
-        },
-        {
-          "tag": "geosite-javdb",
-          "type": "remote",
-          "format": "binary",
-          "url": "https://github.bzmtk.cloudns.biz/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/javdb.srs",
-          "download_detour": "direct"
-        },
-        {
-          "tag": "geosite-alibaba",
-          "type": "remote",
-          "format": "binary",
-          "url": "https://github.bzmtk.cloudns.biz/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/alibaba.srs",
-          "download_detour": "direct"
-        },
-        {
-          "tag": "geosite-jd",
-          "type": "remote",
-          "format": "binary",
-          "url": "https://github.bzmtk.cloudns.biz/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/jd.srs",
-          "download_detour": "direct"
-        },
-        {
-          "tag": "geosite-private",
-          "type": "remote",
-          "format": "binary",
-          "url": "https://github.bzmtk.cloudns.biz/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/private.srs",
+          "url": "https://github.bzmtk.cloudns.biz/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/category-ads-all.srs",
           "download_detour": "direct"
         },
         {
           "tag": "geosite-openai",
           "type": "remote",
           "format": "binary",
-          "url": "https://github.bzmtk.cloudns.biz/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/openai.srs",
+          "url": "https://github.bzmtk.cloudns.biz/https://raw.githubusercontent.com/Toperlock/sing-box-geosite/main/rule/OpenAI.srs",
           "download_detour": "direct"
         },
         {
@@ -702,6 +546,13 @@
           "type": "remote",
           "format": "binary",
           "url": "https://github.bzmtk.cloudns.biz/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/youtube.srs",
+          "download_detour": "direct"
+        },
+        {
+          "tag": "geoip-google",
+          "type": "remote",
+          "format": "binary",
+          "url": "https://github.bzmtk.cloudns.biz/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geoip/google.srs",
           "download_detour": "direct"
         },
         {
@@ -719,6 +570,13 @@
           "download_detour": "direct"
         },
         {
+          "tag": "geoip-telegram",
+          "type": "remote",
+          "format": "binary",
+          "url": "https://github.bzmtk.cloudns.biz/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geoip/telegram.srs",
+          "download_detour": "direct"
+        },
+        {
           "tag": "geosite-telegram",
           "type": "remote",
           "format": "binary",
@@ -726,10 +584,24 @@
           "download_detour": "direct"
         },
         {
+          "tag": "geoip-twitter",
+          "type": "remote",
+          "format": "binary",
+          "url": "https://github.bzmtk.cloudns.biz/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geoip/twitter.srs",
+          "download_detour": "direct"
+        },
+        {
           "tag": "geosite-twitter",
           "type": "remote",
           "format": "binary",
           "url": "https://github.bzmtk.cloudns.biz/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/twitter.srs",
+          "download_detour": "direct"
+        },
+        {
+          "tag": "geoip-facebook",
+          "type": "remote",
+          "format": "binary",
+          "url": "https://github.bzmtk.cloudns.biz/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geoip/facebook.srs",
           "download_detour": "direct"
         },
         {
@@ -744,6 +616,34 @@
           "type": "remote",
           "format": "binary",
           "url": "https://github.bzmtk.cloudns.biz/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/bilibili.srs",
+          "download_detour": "direct"
+        },
+        {
+          "tag": "geosite-docker",
+          "type": "remote",
+          "format": "binary",
+          "url": "https://github.bzmtk.cloudns.biz/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/docker.srs",
+          "download_detour": "direct"
+        },
+	    {
+          "tag": "geosite-javdb",
+          "type": "remote",
+          "format": "binary",
+          "url": "https://github.bzmtk.cloudns.biz/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/javdb.srs",
+          "download_detour": "direct"
+        },
+	    {
+          "tag": "geosite-alibaba",
+          "type": "remote",
+          "format": "binary",
+          "url": "https://github.bzmtk.cloudns.biz/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/alibaba.srs",
+          "download_detour": "direct"
+        },
+	    {
+          "tag": "geosite-jd",
+          "type": "remote",
+          "format": "binary",
+          "url": "https://github.bzmtk.cloudns.biz/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/jd.srs",
           "download_detour": "direct"
         },
         {
@@ -768,6 +668,13 @@
           "download_detour": "direct"
         },
         {
+          "tag": "geoip-netflix",
+          "type": "remote",
+          "format": "binary",
+          "url": "https://github.bzmtk.cloudns.biz/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geoip/netflix.srs",
+          "download_detour": "direct"
+        },
+        {
           "tag": "geosite-netflix",
           "type": "remote",
           "format": "binary",
@@ -779,6 +686,13 @@
           "type": "remote",
           "format": "binary",
           "url": "https://github.bzmtk.cloudns.biz/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/disney.srs",
+          "download_detour": "direct"
+        },
+        {
+          "tag": "geoip-apple",
+          "type": "remote",
+          "format": "binary",
+          "url": "https://github.bzmtk.cloudns.biz/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo-lite/geoip/apple.srs",
           "download_detour": "direct"
         },
         {
@@ -810,6 +724,13 @@
           "download_detour": "direct"
         },
         {
+          "tag": "geosite-dmm",
+          "type": "remote",
+          "format": "binary",
+          "url": "https://github.bzmtk.cloudns.biz/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/dmm.srs",
+          "download_detour": "direct"
+        },
+        {
           "tag": "geosite-hbo",
           "type": "remote",
           "format": "binary",
@@ -824,13 +745,6 @@
           "download_detour": "direct"
         },
         {
-          "tag": "geosite-cn",
-          "type": "remote",
-          "format": "binary",
-          "url": "https://github.bzmtk.cloudns.biz/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/cn.srs",
-          "download_detour": "direct"
-        },
-        {
           "tag": "geosite-geolocation-!cn",
           "type": "remote",
           "format": "binary",
@@ -838,10 +752,17 @@
           "download_detour": "direct"
         },
         {
-          "tag": "geosite-category-ads-all",
+          "tag": "geoip-cn",
           "type": "remote",
           "format": "binary",
-          "url": "https://github.bzmtk.cloudns.biz/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/category-ads-all.srs",
+          "url": "https://github.bzmtk.cloudns.biz/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geoip/cn.srs",
+          "download_detour": "direct"
+        },
+        {
+          "tag": "geosite-cn",
+          "type": "remote",
+          "format": "binary",
+          "url": "https://github.bzmtk.cloudns.biz/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/cn.srs",
           "download_detour": "direct"
         }
       ]
