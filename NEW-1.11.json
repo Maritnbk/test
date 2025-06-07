@@ -271,7 +271,7 @@
       "type": "vmess",
       "server": "104.16.0.0",
       "server_port": 443,
-      "uuid": "1b734682-5b2f-418b-945b-a8055874fc05",
+      "uuid": "09dc4c92-3eee-45bb-a0e3-35f87b02b570",
       "security": "auto",
       "alter_id": 0,
       "packet_encoding": "xudp",
@@ -285,7 +285,7 @@
         "headers": {
           "Host": "idx.matyy.dpdns.org"
         },
-        "path": "/1b734682-5b2f-418b-945b-a8055874fc05-vm",
+        "path": "/09dc4c92-3eee-45bb-a0e3-35f87b02b570-vm",
         "early_data_header_name": "Sec-WebSocket-Protocol",
         "max_early_data": 2048
       }
@@ -295,7 +295,7 @@
       "type": "vmess",
       "server": "104.17.0.0",
       "server_port": 8443,
-      "uuid": "1b734682-5b2f-418b-945b-a8055874fc05",
+      "uuid": "09dc4c92-3eee-45bb-a0e3-35f87b02b570",
       "security": "auto",
       "alter_id": 0,
       "packet_encoding": "xudp",
@@ -309,7 +309,7 @@
         "headers": {
           "Host": "idx.matyy.dpdns.org"
         },
-        "path": "/1b734682-5b2f-418b-945b-a8055874fc05-vm",
+        "path": "/09dc4c92-3eee-45bb-a0e3-35f87b02b570-vm",
         "early_data_header_name": "Sec-WebSocket-Protocol",
         "max_early_data": 2048
       }
@@ -319,7 +319,7 @@
       "type": "vmess",
       "server": "104.18.0.0",
       "server_port": 2053,
-      "uuid": "1b734682-5b2f-418b-945b-a8055874fc05",
+      "uuid": "09dc4c92-3eee-45bb-a0e3-35f87b02b570",
       "security": "auto",
       "alter_id": 0,
       "packet_encoding": "xudp",
@@ -333,7 +333,7 @@
         "headers": {
           "Host": "idx.matyy.dpdns.org"
         },
-        "path": "/1b734682-5b2f-418b-945b-a8055874fc05-vm",
+        "path": "/09dc4c92-3eee-45bb-a0e3-35f87b02b570-vm",
         "early_data_header_name": "Sec-WebSocket-Protocol",
         "max_early_data": 2048
       }
@@ -343,7 +343,7 @@
       "type": "vmess",
       "server": "104.19.0.0",
       "server_port": 2083,
-      "uuid": "1b734682-5b2f-418b-945b-a8055874fc05",
+      "uuid": "09dc4c92-3eee-45bb-a0e3-35f87b02b570",
       "security": "auto",
       "alter_id": 0,
       "packet_encoding": "xudp",
@@ -357,7 +357,7 @@
         "headers": {
           "Host": "idx.matyy.dpdns.org"
         },
-        "path": "/1b734682-5b2f-418b-945b-a8055874fc05-vm",
+        "path": "/09dc4c92-3eee-45bb-a0e3-35f87b02b570-vm",
         "early_data_header_name": "Sec-WebSocket-Protocol",
         "max_early_data": 2048
       }
@@ -367,7 +367,7 @@
       "type": "vmess",
       "server": "104.20.0.0",
       "server_port": 2087,
-      "uuid": "1b734682-5b2f-418b-945b-a8055874fc05",
+      "uuid": "09dc4c92-3eee-45bb-a0e3-35f87b02b570",
       "security": "auto",
       "alter_id": 0,
       "packet_encoding": "xudp",
@@ -381,7 +381,7 @@
         "headers": {
           "Host": "idx.matyy.dpdns.org"
         },
-        "path": "/1b734682-5b2f-418b-945b-a8055874fc05-vm",
+        "path": "/09dc4c92-3eee-45bb-a0e3-35f87b02b570-vm",
         "early_data_header_name": "Sec-WebSocket-Protocol",
         "max_early_data": 2048
       }
@@ -391,7 +391,7 @@
       "type": "vmess",
       "server": "[2606:4700::]",
       "server_port": 2096,
-      "uuid": "1b734682-5b2f-418b-945b-a8055874fc05",
+      "uuid": "09dc4c92-3eee-45bb-a0e3-35f87b02b570",
       "security": "auto",
       "alter_id": 0,
       "packet_encoding": "xudp",
@@ -405,7 +405,7 @@
         "headers": {
           "Host": "idx.matyy.dpdns.org"
         },
-        "path": "/1b734682-5b2f-418b-945b-a8055874fc05-vm",
+        "path": "/09dc4c92-3eee-45bb-a0e3-35f87b02b570-vm",
         "early_data_header_name": "Sec-WebSocket-Protocol",
         "max_early_data": 2048
       }
