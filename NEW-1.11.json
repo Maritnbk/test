@@ -133,7 +133,8 @@
           "IDX-tls-2083",
           "IDX-tls-2087",
           "IDX-tls-2096",
-          "Claw-HY2"
+          "Claw-HY2 1",
+          "Claw-HY2 2"
         ]
       },
       {
@@ -174,7 +175,8 @@
           "IDX-tls-2083",
           "IDX-tls-2087",
           "IDX-tls-2096",
-          "Claw-HY2"
+          "Claw-HY2 1",
+          "Claw-HY2 2"
         ],
         "url": "http://www.gstatic.com/generate_204",
         "interval": "10m",
@@ -413,9 +415,26 @@
       }
     },
     {
-      "tag": "Claw-HY2",
+      "tag": "Claw-HY2 1",
       "type": "hysteria2",
       "server": "47.91.75.147",
+      "server_port": 44001,
+      "password": "6fd12fa8-a41e-404e-9d4f-bfd394b11371",
+      "up_mbps": 10,
+      "down_mbps": 100,
+      "tls": {
+        "enabled": true,
+        "server_name": "www.bing.com",
+        "insecure": true,
+        "alpn": [
+          "h3"
+        ]
+      }
+    },
+    {
+      "tag": "Claw-HY2 2",
+      "type": "hysteria2",
+      "server": "udp.eu-central-1.clawcloudrun.com",
       "server_port": 44001,
       "password": "6fd12fa8-a41e-404e-9d4f-bfd394b11371",
       "up_mbps": 10,
