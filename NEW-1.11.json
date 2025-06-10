@@ -253,7 +253,7 @@
       "type": "vless",
       "tag": "CF-sg",
       "server": "www.visa.com.sg",
-      "server_port": 2096,
+      "server_port": 443,
       "uuid": "f4148541-3b5c-4ed2-95d4-38afa747c76b",
       "transport": {
         "path": "/?ed=2560",
