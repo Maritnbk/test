@@ -128,7 +128,7 @@
         "🇷🇺 RU-hysteria | 3",
         "🇷🇺 RU-Hysteria2 | 1",
         "🇷🇺 RU-Hysteria2 | 2",
-        "🇷🇺 RU-Hysteria2 | 3"
+        "🇳🇱 NL-Hysteria2 | 1"
       ]
     },
     {
@@ -260,10 +260,10 @@
       }
     },
     {
-      "tag": "🇷🇺 RU-Hysteria2 | 3",
+      "tag": "🇳🇱 NL-Hysteria2 | 1",
       "type": "hysteria2",
-      "server": "46.29.163.171",
-      "server_port": 30033,
+      "server": "163.172.217.10",
+      "server_port": 10011,
       "password": "dongtaiwang.com",
       "up_mbps": 10,
       "down_mbps": 100,
