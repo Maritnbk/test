@@ -475,12 +475,6 @@
           "action": "hijack-dns"
         },
         {
-        "type": "remote",
-        "tag": "geosite-dnsblock",
-        "format": "binary",
-        "url": "https://github.bzmtk.cloudns.biz/https://raw.githubusercontent.com/TG-Twilight/AWAvenue-Ads-Rule/main//Filters/AWAvenue-Ads-Rule-Singbox.srs"
-        },
-        {
           "rule_set": "geosite-category-ads-all",
           "action": "reject"
         },
@@ -581,6 +575,12 @@
           "format": "binary",
           "url": "https://github.bzmtk.cloudns.biz/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/category-ads-all.srs",
           "download_detour": "direct"
+        },
+        {
+        "type": "remote",
+        "tag": "geosite-dnsblock",
+        "format": "binary",
+        "url": "https://github.bzmtk.cloudns.biz/https://raw.githubusercontent.com/TG-Twilight/AWAvenue-Ads-Rule/main//Filters/AWAvenue-Ads-Rule-Singbox.srs"
         },
         {
           "tag": "geosite-openai",
