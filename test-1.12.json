@@ -127,14 +127,6 @@
       ]
     },
     {
-      "tag": "China",
-      "type": "selector",
-      "outbounds": [
-        "direct",
-        "Proxy"
-      ]
-    },
-    {
       "tag": "auto",
       "type": "urltest",
       "outbounds": [
@@ -480,6 +472,7 @@
   ],
   "route": {
     "auto_detect_interface": true,
+    "default_domain_resolver": "cn_dns",
     "final": "Proxy",
     "rules": [
       {
@@ -490,16 +483,7 @@
         "action": "sniff"
       },
       {
-        "type": "logical",
-        "mode": "or",
-        "rules": [
-          {
-            "port": 53
-          },
-          {
-            "protocol": "dns"
-          }
-        ],
+        "protocol": "dns",
         "action": "hijack-dns"
       },
       {
@@ -564,7 +548,7 @@
       },
       {
         "rule_set": "geosite-bilibili",
-        "outbound": "China"
+        "outbound": "direct"
       },
       {
         "rule_set": "geosite-bahamut",
@@ -627,7 +611,7 @@
           "geosite-alibaba",
           "geosite-jd"
         ],
-        "outbound": "China"
+        "outbound": "direct"
       }
     ],
     "rule_set": [
