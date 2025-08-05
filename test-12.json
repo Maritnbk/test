@@ -53,6 +53,10 @@
         "server": "fakeip"
       },
       {
+        "rule_set": "AWAvenue-Ads",
+        "action": "reject"
+      },	  
+      {
         "rule_set": "geosite-cn",
         "server": "cn-dns"
       }
@@ -472,7 +476,7 @@
   ],
   "route": {
     "auto_detect_interface": true,
-    "default_domain_resolver": "cn-dns",
+    "default_domain_resolver": "cn_dns",
     "final": "Proxy",
     "rules": [
       {
@@ -620,6 +624,13 @@
         "type": "remote",
         "format": "binary",
         "url": "https://github.bzmtk.cloudns.biz/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/category-ads-all.srs",
+        "download_detour": "direct"
+      },
+      {
+        "tag": "AWAvenue-Ads",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://github.bzmtk.cloudns.biz/https://raw.githubusercontent.com/TG-Twilight/AWAvenue-Ads-Rule/main//Filters/AWAvenue-Ads-Rule-Singbox.srs",
         "download_detour": "direct"
       },
       {
