@@ -57,7 +57,7 @@
         "server": "cn-dns"
       }
     ],
-    "final": "proxy_dns",
+    "final": "proxy-dns",
     "independent_cache": true,
     "independent_cache": false,
     "strategy": "prefer_ipv4"
