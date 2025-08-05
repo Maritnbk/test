@@ -472,7 +472,7 @@
   ],
   "route": {
     "auto_detect_interface": true,
-    "default_domain_resolver": "cn_dns",
+    "default_domain_resolver": "cn-dns",
     "final": "Proxy",
     "rules": [
       {
