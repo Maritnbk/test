@@ -507,7 +507,7 @@
       {
         "domain": [
           "board.zash.run.place",
-		  "clash.razord.top",
+	  "clash.razord.top",
           "yacd.metacubex.one",
           "yacd.haishan.me",
           "d.metacubex.one"
@@ -525,33 +525,33 @@
           "geosite-google",
           "geosite-github",
           "geosite-docker",
-		  "geosite-openai",
-		  "geoip-telegram",
+	  "geosite-openai",
+          "geoip-telegram",
           "geosite-telegram",
-		  "geoip-twitter",
-          "geosite-twitter"
-		  "geoip-facebook",
+	  "geoip-twitter",
+          "geosite-twitter",
+	  "geoip-facebook",
           "geosite-facebook",
-		  "geosite-instagram",
-		  "geosite-bahamut",
-		  "geosite-spotify",
-		  "geosite-tiktok",
-		  "geoip-netflix",
+	  "geosite-instagram",
+	  "geosite-bahamut",
+	  "geosite-spotify",
+	  "geosite-tiktok",
+	  "geoip-netflix",
           "geosite-netflix",
-		  "geosite-disney",
-		  "geosite-category-games",
+	  "geosite-disney",
+	  "geosite-category-games",
           "geosite-dmm",
-		  "geosite-hbo",
+	  "geosite-hbo",
           "geosite-primevideo",
           "geosite-javdb",
-		  "geosite-geolocation-!cn",
+	  "geosite-geolocation-!cn"
         ],
         "outbound": "Proxy"
       },
       {
         "rule_set": [
           "geosite-bilibili",
-		  "geoip-cn",
+	  "geoip-cn",
           "geosite-cn",
           "geosite-alibaba",
           "geosite-jd"		  
