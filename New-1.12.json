@@ -168,11 +168,7 @@
       "tls": {
         "enabled": true,
         "insecure": true,
-        "server_name": "ygcf.bktyy.dpdns.org",
-		    "utls":{
-			    "enabled":true,
-			    "fingerprint":"randomized"
-		    }
+        "server_name": "ygcf.bktyy.dpdns.org"
       },
       "transport": {
         "type": "ws",
@@ -194,11 +190,7 @@
       "tls": {
         "enabled": true,
         "insecure": true,
-        "server_name": "ygcf.bktyy.dpdns.org",
-		    "utls":{
-			    "enabled":true,
-			    "fingerprint":"randomized"
-		    }
+        "server_name": "ygcf.bktyy.dpdns.org"
       },
       "transport": {
         "type": "ws",
@@ -220,11 +212,7 @@
       "tls": {
         "enabled": true,
         "insecure": true,
-        "server_name": "ygcf.bktyy.dpdns.org",
-		    "utls":{
-			    "enabled":true,
-			    "fingerprint":"randomized"
-		    }
+        "server_name": "ygcf.bktyy.dpdns.org"
       },
       "transport": {
         "type": "ws",
@@ -246,11 +234,7 @@
       "tls": {
         "enabled": true,
         "insecure": true,
-        "server_name": "ygcf.bktyy.dpdns.org",
-		    "utls":{
-			    "enabled":true,
-			    "fingerprint":"randomized"
-		    }
+        "server_name": "ygcf.bktyy.dpdns.org"
       },
       "transport": {
         "type": "ws",
@@ -272,11 +256,7 @@
       "tls": {
         "enabled": true,
         "insecure": true,
-        "server_name": "ygcf.bktyy.dpdns.org",
-		    "utls":{
-			    "enabled":true,
-			    "fingerprint":"randomized"
-		    }
+        "server_name": "ygcf.bktyy.dpdns.org"
       },
       "transport": {
         "type": "ws",
@@ -298,11 +278,7 @@
       "tls": {
         "enabled": true,
         "insecure": true,
-        "server_name": "ygcf.bktyy.dpdns.org",
-		    "utls":{
-			    "enabled":true,
-			    "fingerprint":"randomized"
-		    }
+        "server_name": "ygcf.bktyy.dpdns.org"
       },
       "transport": {
         "type": "ws",
