@@ -148,8 +148,7 @@
       "tag": "Tailscale",
       "type": "selector",
       "outbounds": [
-        "ts-ep",
-		"direct"
+        "ts-ep"
       ]
     },
     {
