@@ -314,21 +314,21 @@
       "type": "vmess",
       "server": "104.16.0.0",
       "server_port": 443,
-      "uuid": "09dc4c92-3eee-45bb-a0e3-35f87b02b570",
+      "uuid": "57008ce8-a98d-4ea4-8dc9-a0492110bb25",
       "security": "auto",
       "alter_id": 0,
       "packet_encoding": "xudp",
       "tls": {
         "enabled": true,
         "insecure": true,
-        "server_name": "idx.matyy.dpdns.org"
+        "server_name": "idx.matty.cloudns.be"
       },
       "transport": {
         "type": "ws",
         "headers": {
-          "Host": "idx.matyy.dpdns.org"
+          "Host": "idx.matty.cloudns.be"
         },
-        "path": "/09dc4c92-3eee-45bb-a0e3-35f87b02b570-vm",
+        "path": "/57008ce8-a98d-4ea4-8dc9-a0492110bb25-vm",
         "early_data_header_name": "Sec-WebSocket-Protocol",
         "max_early_data": 2048
       }
@@ -338,21 +338,21 @@
       "type": "vmess",
       "server": "104.17.0.0",
       "server_port": 8443,
-      "uuid": "09dc4c92-3eee-45bb-a0e3-35f87b02b570",
+      "uuid": "57008ce8-a98d-4ea4-8dc9-a0492110bb25",
       "security": "auto",
       "alter_id": 0,
       "packet_encoding": "xudp",
       "tls": {
         "enabled": true,
         "insecure": true,
-        "server_name": "idx.matyy.dpdns.org"
+        "server_name": "idx.matty.cloudns.be"
       },
       "transport": {
         "type": "ws",
         "headers": {
-          "Host": "idx.matyy.dpdns.org"
+          "Host": "idx.matty.cloudns.be"
         },
-        "path": "/09dc4c92-3eee-45bb-a0e3-35f87b02b570-vm",
+        "path": "/57008ce8-a98d-4ea4-8dc9-a0492110bb25-vm",
         "early_data_header_name": "Sec-WebSocket-Protocol",
         "max_early_data": 2048
       }
@@ -362,21 +362,21 @@
       "type": "vmess",
       "server": "104.18.0.0",
       "server_port": 2053,
-      "uuid": "09dc4c92-3eee-45bb-a0e3-35f87b02b570",
+      "uuid": "57008ce8-a98d-4ea4-8dc9-a0492110bb25",
       "security": "auto",
       "alter_id": 0,
       "packet_encoding": "xudp",
       "tls": {
         "enabled": true,
         "insecure": true,
-        "server_name": "idx.matyy.dpdns.org"
+        "server_name": "idx.matty.cloudns.be"
       },
       "transport": {
         "type": "ws",
         "headers": {
-          "Host": "idx.matyy.dpdns.org"
+          "Host": "idx.matty.cloudns.be"
         },
-        "path": "/09dc4c92-3eee-45bb-a0e3-35f87b02b570-vm",
+        "path": "/57008ce8-a98d-4ea4-8dc9-a0492110bb25-vm",
         "early_data_header_name": "Sec-WebSocket-Protocol",
         "max_early_data": 2048
       }
@@ -386,21 +386,21 @@
       "type": "vmess",
       "server": "104.19.0.0",
       "server_port": 2083,
-      "uuid": "09dc4c92-3eee-45bb-a0e3-35f87b02b570",
+      "uuid": "57008ce8-a98d-4ea4-8dc9-a0492110bb25",
       "security": "auto",
       "alter_id": 0,
       "packet_encoding": "xudp",
       "tls": {
         "enabled": true,
         "insecure": true,
-        "server_name": "idx.matyy.dpdns.org"
+        "server_name": "idx.matty.cloudns.be"
       },
       "transport": {
         "type": "ws",
         "headers": {
-          "Host": "idx.matyy.dpdns.org"
+          "Host": "idx.matty.cloudns.be"
         },
-        "path": "/09dc4c92-3eee-45bb-a0e3-35f87b02b570-vm",
+        "path": "/57008ce8-a98d-4ea4-8dc9-a0492110bb25-vm",
         "early_data_header_name": "Sec-WebSocket-Protocol",
         "max_early_data": 2048
       }
@@ -410,21 +410,21 @@
       "type": "vmess",
       "server": "104.20.0.0",
       "server_port": 2087,
-      "uuid": "09dc4c92-3eee-45bb-a0e3-35f87b02b570",
+      "uuid": "57008ce8-a98d-4ea4-8dc9-a0492110bb25",
       "security": "auto",
       "alter_id": 0,
       "packet_encoding": "xudp",
       "tls": {
         "enabled": true,
         "insecure": true,
-        "server_name": "idx.matyy.dpdns.org"
+        "server_name": "idx.matty.cloudns.be"
       },
       "transport": {
         "type": "ws",
         "headers": {
-          "Host": "idx.matyy.dpdns.org"
+          "Host": "idx.matty.cloudns.be"
         },
-        "path": "/09dc4c92-3eee-45bb-a0e3-35f87b02b570-vm",
+        "path": "/57008ce8-a98d-4ea4-8dc9-a0492110bb25-vm",
         "early_data_header_name": "Sec-WebSocket-Protocol",
         "max_early_data": 2048
       }
@@ -434,21 +434,21 @@
       "type": "vmess",
       "server": "[2606:4700::]",
       "server_port": 2096,
-      "uuid": "09dc4c92-3eee-45bb-a0e3-35f87b02b570",
+      "uuid": "57008ce8-a98d-4ea4-8dc9-a0492110bb25",
       "security": "auto",
       "alter_id": 0,
       "packet_encoding": "xudp",
       "tls": {
         "enabled": true,
         "insecure": true,
-        "server_name": "idx.matyy.dpdns.org"
+        "server_name": "idx.matty.cloudns.be"
       },
       "transport": {
         "type": "ws",
         "headers": {
-          "Host": "idx.matyy.dpdns.org"
+          "Host": "idx.matty.cloudns.be"
         },
-        "path": "/09dc4c92-3eee-45bb-a0e3-35f87b02b570-vm",
+        "path": "/57008ce8-a98d-4ea4-8dc9-a0492110bb25-vm",
         "early_data_header_name": "Sec-WebSocket-Protocol",
         "max_early_data": 2048
       }
