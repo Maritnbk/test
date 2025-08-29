@@ -187,13 +187,13 @@
       "tls": {
         "enabled": true,
         "insecure": true,
-        "server_name": "ygcf.bktyy.dpdns.org"
+        "server_name": "ygcf.matty.cloudns.be"
       },
       "transport": {
         "type": "ws",
         "path": "/",
         "headers": {
-          "Host": "ygcf.bktyy.dpdns.org"
+          "Host": "ygcf.matty.cloudns.be"
         },
         "early_data_header_name": "Sec-WebSocket-Protocol",
         "max_early_data": 2560
@@ -209,13 +209,13 @@
       "tls": {
         "enabled": true,
         "insecure": true,
-        "server_name": "ygcf.bktyy.dpdns.org"
+        "server_name": "ygcf.matty.cloudns.be"
       },
       "transport": {
         "type": "ws",
         "path": "/",
         "headers": {
-          "Host": "ygcf.bktyy.dpdns.org"
+          "Host": "ygcf.matty.cloudns.be"
         },
         "early_data_header_name": "Sec-WebSocket-Protocol",
         "max_early_data": 2560
@@ -231,13 +231,13 @@
       "tls": {
         "enabled": true,
         "insecure": true,
-        "server_name": "ygcf.bktyy.dpdns.org"
+        "server_name": "ygcf.matty.cloudns.be"
       },
       "transport": {
         "type": "ws",
         "path": "/",
         "headers": {
-          "Host": "ygcf.bktyy.dpdns.org"
+          "Host": "ygcf.matty.cloudns.be"
         },
         "early_data_header_name": "Sec-WebSocket-Protocol",
         "max_early_data": 2560
@@ -253,13 +253,13 @@
       "tls": {
         "enabled": true,
         "insecure": true,
-        "server_name": "ygcf.bktyy.dpdns.org"
+        "server_name": "ygcf.matty.cloudns.be"
       },
       "transport": {
         "type": "ws",
         "path": "/",
         "headers": {
-          "Host": "ygcf.bktyy.dpdns.org"
+          "Host": "ygcf.matty.cloudns.be"
         },
         "early_data_header_name": "Sec-WebSocket-Protocol",
         "max_early_data": 2560
@@ -275,13 +275,13 @@
       "tls": {
         "enabled": true,
         "insecure": true,
-        "server_name": "ygcf.bktyy.dpdns.org"
+        "server_name": "ygcf.matty.cloudns.be"
       },
       "transport": {
         "type": "ws",
         "path": "/",
         "headers": {
-          "Host": "ygcf.bktyy.dpdns.org"
+          "Host": "ygcf.matty.cloudns.be"
         },
         "early_data_header_name": "Sec-WebSocket-Protocol",
         "max_early_data": 2560
@@ -297,13 +297,13 @@
       "tls": {
         "enabled": true,
         "insecure": true,
-        "server_name": "ygcf.bktyy.dpdns.org"
+        "server_name": "ygcf.matty.cloudns.be"
       },
       "transport": {
         "type": "ws",
         "path": "/",
         "headers": {
-          "Host": "ygcf.bktyy.dpdns.org"
+          "Host": "ygcf.matty.cloudns.be"
         },
         "early_data_header_name": "Sec-WebSocket-Protocol",
         "max_early_data": 2560
